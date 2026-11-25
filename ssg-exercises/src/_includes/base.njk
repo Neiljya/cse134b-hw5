@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | Neil Yang</title>
+    <link rel="stylesheet" href="assets/site.css">
+    <script src="assets/theme.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav aria-label="SSG project pages">
+            <a href="index.html"{% if title == "MiniAWS" %} aria-current="page"{% endif %}>MiniAWS</a>
+            <a href="ratemydininghall.html"{% if title == "RateMyDiningHall" %} aria-current="page"{% endif %}>RateMyDiningHall</a>
+        </nav>
+
+        <button id="theme-toggle" type="button" hidden>Switch Theme</button>
+    </header>
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    {% include "footer.njk" %}
+</body>
+</html>
