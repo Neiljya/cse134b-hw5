@@ -32,7 +32,7 @@
     --button-hover-background: #1e40af;
 }
 
-/* FORM RULES */
+/* Form rules */
 .contact-form input,
 .contact-form textarea {
     box-sizing: border-box;
@@ -69,7 +69,6 @@ body {
     overflow-wrap: anywhere;
 }
 
-/* Child combinator for direct header and footer tags */
 body > header,
 body > footer {
     padding: 1rem;
@@ -90,7 +89,6 @@ nav {
     gap: 0.5rem;
 }
 
-/* Descendant combinator: add space around links inside navs */
 nav a {
     padding: 0.6em;
 }
@@ -172,7 +170,6 @@ iframe {
     max-width: 100%;
 }
 
-/* Attribute selectors for project cards' texts */
 section[aria-labelledby="projects-title"],
 section[aria-labelledby="project-list-title"] {
     display: grid;
@@ -184,6 +181,38 @@ section[aria-labelledby="projects-title"] > h2,
 section[aria-labelledby="projects-title"] > p,
 section[aria-labelledby="project-list-title"] > h2 {
     grid-column: 1 / -1;
+}
+
+/* Project Spotlight and Live Fact */
+.spotlight-widget {
+    margin-bottom: 2rem;
+}
+
+project-spotlight {
+    display: block;
+
+    --spotlight-background: var(--surface, #ffffff);
+    --spotlight-text: var(--text, #202b3c);
+    --spotlight-border: var(--border, #b8cddd);
+    --spotlight-focus: var(--focus, #174ea6);
+}
+
+project-spotlight > .spotlight-panel {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--spotlight-border, #b8cddd);
+    border-radius: 0.5rem;
+    background-color: var(--spotlight-background, #ffffff);
+    color: var(--spotlight-text, #202b3c);
+}
+
+project-spotlight :focus-visible {
+    outline: 3px solid var(--spotlight-focus, #174ea6);
+    outline-offset: 3px;
+}
+
+project-spotlight [role="status"] {
+    margin: 0.75rem 0 0;
 }
 
 form {
@@ -230,17 +259,16 @@ button:hover {
     background: var(--button-hover-background);
 }
 
-/* Keep the theme button hidden until its JavaScript is ready. */
+/* Keep JavaScript-only buttons hidden until their scripts are ready. */
 button[hidden] {
     display: none;
 }
 
-#theme-toggle {
+#theme-toggle:not([hidden]) {
     display: block;
     margin: 0.75rem auto 0;
 }
 
-/* Targets: TODO form, Prevent form TODO from overlapping with other content */
 dialog[open] {
     position: static;
     max-width: 100%;
