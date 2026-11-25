@@ -1,0 +1,278 @@
+:root {
+    color-scheme: light;
+
+    --background: #e5f4ff;
+    --surface: #ffffff;
+    --text: #202b3c;
+    --accent: #174ea6;
+    --border: #b8cddd;
+    --focus: #174ea6;
+    --error: #b42318;
+    --highlight: #e8effc;
+    --button-background: #174ea6;
+    --button-text: #ffffff;
+    --button-hover-background: #103775;
+    --font: system-ui, "Segoe UI", sans-serif;
+    --width: 68rem;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --background: #111827;
+    --surface: #1f2937;
+    --text: #f3f4f6;
+    --accent: #93c5fd;
+    --border: #4b5563;
+    --focus: #fde047;
+    --error: #fca5a5;
+    --highlight: #374151;
+    --button-background: #1d4ed8;
+    --button-text: #ffffff;
+    --button-hover-background: #1e40af;
+}
+
+/* FORM RULES */
+.contact-form input,
+.contact-form textarea {
+    box-sizing: border-box;
+    max-width: 100%;
+    border: 2px solid var(--border);
+}
+
+.contact-form :required {
+    border-left-width: 4px;
+}
+
+.contact-form :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.contact-form :user-invalid {
+    border-style: dashed;
+    outline: 2px solid var(--error);
+    outline-offset: 2px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* Child combinator for direct header and footer tags */
+body > header,
+body > footer {
+    padding: 1rem;
+    background: var(--surface);
+    justify-content: center;
+}
+
+main {
+    width: min(var(--width), calc(100% - 2rem));
+    margin: 2rem auto;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Descendant combinator: add space around links inside navs */
+nav a {
+    padding: 0.6em;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+    background: var(--highlight);
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0 0 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+article,
+fieldset,
+career-highlight {
+    display: block;
+    min-width: 0;
+    margin: 0 0 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+hr {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid var(--border);
+}
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    text-decoration-thickness: 0.15em;
+}
+
+:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+}
+
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+audio,
+iframe {
+    max-width: 100%;
+}
+
+/* Attribute selectors for project cards' texts */
+section[aria-labelledby="projects-title"],
+section[aria-labelledby="project-list-title"] {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+section[aria-labelledby="projects-title"] > h2,
+section[aria-labelledby="projects-title"] > p,
+section[aria-labelledby="project-list-title"] > h2 {
+    grid-column: 1 / -1;
+}
+
+form {
+    max-width: 42rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input,
+textarea,
+select,
+button {
+    font: inherit;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    min-width: 0;
+    padding: 0.5em;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    padding: 0.6em 1em;
+    border: 1px solid var(--button-background);
+    border-radius: 0.25rem;
+    background: var(--button-background);
+    color: var(--button-text);
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--button-hover-background);
+}
+
+/* Keep the theme button hidden until its JavaScript is ready. */
+button[hidden] {
+    display: none;
+}
+
+#theme-toggle {
+    display: block;
+    margin: 0.75rem auto 0;
+}
+
+/* Targets: TODO form, Prevent form TODO from overlapping with other content */
+dialog[open] {
+    position: static;
+    max-width: 100%;
+    margin: 1rem 0;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 250ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 0.01ms !important;
+    }
+}
+
+@media (max-width: 48rem) {
+    section[aria-labelledby="projects-title"],
+    section[aria-labelledby="project-list-title"] {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}

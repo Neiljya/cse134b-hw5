@@ -1,0 +1,127 @@
+:root {
+    --main-font: Arial, Helvetica, sans-serif;
+    --text-color: darkblue;
+    --warning-color: yellow;
+    --base-line-height: 1.6;
+    --max-width: 800px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--main-font);
+    color: var(--text-color);
+    line-height: var(--base-line-height);
+    margin: 0 auto; /* Centers text in middle of screen on desktop */
+    padding: 1rem; /* Add padding for mobile device readability */
+    max-width: var(--max-width); /* Caps width so text isnt entirely on edges */
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.latin {
+    font-style: italic;
+}
+
+#warning {
+    background-color: var(--warning-color);
+}
+
+/* ============== LAYOUT ================ */
+dl {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+}
+
+dt {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+dd {
+    margin: 0;
+}
+
+form p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (min-width: 600px) {
+    body {
+        padding: 2rem;
+    }
+    dl {
+        grid-template-columns: 150px 1fr;
+        gap: 1rem 2rem;
+        align-items: baseline;
+    }
+    dt {
+        margin-top: 0;
+        text-align: right;
+    }
+}
+
+/* Combinators */
+header > p {
+    font-style: italic;
+    opacity: 0.3;
+    margin-top: -1rem;;
+}
+
+h2 + p {
+    margin-top: 0.2rem;
+}
+
+input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid var(--text-color);
+    border-radius: 2px;
+}
+
+/* Interactivity */
+a {
+    color: var(--text-color);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    background-color: var(--warning-color);
+    text-decoration-thickness: 2px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+a:focus,
+input:focus,
+button:focus {
+    outline: 3px solid var(--text-color);
+    outline-offset: 3px;
+    background-color: rgba(0,0,139,0.05);
+}
+
+/* Cascade */
+footer {
+    text-align: left;
+}
+
+/* this overrides the previous one because using same tag and appears later */
+footer {
+    text-align: center;
+}
